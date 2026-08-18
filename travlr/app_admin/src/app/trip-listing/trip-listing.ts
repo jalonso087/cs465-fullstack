@@ -4,6 +4,7 @@ import { CommonModule} from '@angular/common';
 import { TripCardComponent } from '../trip-card/trip-card';
 import { Trip } from '../models/trip';
 import { TripDataService } from '../services/trip-data';
+import { AuthenticationService } from '../services/authentication';
 
 import { Router } from '@angular/router';
 
@@ -24,12 +25,17 @@ export class TripListingComponent implements OnInit {
   constructor(
     private tripDataService: TripDataService, 
     private cdr: ChangeDetectorRef,
+    private authenticationService: AuthenticationService,
     private router: Router) {
     console.log('trip-listing constructor');
   }
 
   public addTrip(): void {
     this.router.navigate(['add-trip']);
+  }
+
+  public isLoggedIn() {
+    return this.authenticationService.isLoggedIn();
   }
 
   private getStuff(): void {

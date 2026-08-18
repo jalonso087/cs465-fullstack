@@ -3,7 +3,6 @@
         <h2 class="text-center">Add Trip</h2>
         <form *ngIf="addForm" [formGroup]="addForm"
 (ngSubmit)="onSubmit()">
-
             <div class="form-group">
                 <label>Code:</label>
                 <input type="text" formControlName="code"
@@ -100,6 +99,8 @@
                 </div>
             </div>
         </div>
+        <div  *ngIf="isLoggedIn()">
             <button type="submit" class="btn btn-info">Save</button>
+        </div>
         </form>
         </div>
